@@ -53,9 +53,9 @@ function renderiza_faturamento_mensal(url){
         const myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                labels: data.labels,
                 datasets: [{
-                    label: data.labels,
+                    label: 'faturamento',
                     data: data.data,
                     backgroundColor: cores_faturamento_mensal[0],
                     borderColor: cores_faturamento_mensal[1],
@@ -82,7 +82,7 @@ function renderiza_produtos_mais_vendidos(url){
     }).then(function(data){
         
         const ctx = document.getElementById('produtos_mais_vendidos').getContext('2d');
-        var cores_produtos_mais_vendidos = gera_cor(qtd=4)
+        var cores_produtos_mais_vendidos = gera_cor(qtd=3)
         const myChart = new Chart(ctx, {
             type: 'doughnut',
             data: {

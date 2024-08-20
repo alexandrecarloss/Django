@@ -16,7 +16,6 @@ def retorna_total_vendido(request):
     
 def relatorio_faturamento(request):
     x = Vendas.objects.all()
-
     meses = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez']
     data = []
     labels = []
@@ -31,9 +30,10 @@ def relatorio_faturamento(request):
         
         y = sum([i.total for i in x if i.data.month == mes and i.data.year == ano])
         labels.append(meses[mes-1])
+        # print('mes: ',meses[mes-1],  'y: ', y)
         data.append(y)
         cont += 1
-
+    #print('data', data[::-1], 'labels', labels[::-1])
     data_json = {'data': data[::-1], 'labels': labels[::-1]}
      
     return JsonResponse(data_json)
