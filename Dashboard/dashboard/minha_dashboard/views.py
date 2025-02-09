@@ -10,7 +10,6 @@ def home(request):
 
 def retorna_total_vendido(request):
     total = Vendas.objects.all().aggregate(Sum('total'))['total__sum']
-    print(total)
     if request.method == "GET":
         return JsonResponse({'total': total})
     
